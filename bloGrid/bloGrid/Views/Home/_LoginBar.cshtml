@@ -1,0 +1,11 @@
+﻿
+<div id="LoginBar">
+        @using (Html.BeginForm())
+        {
+            @Html.Label("Username: ")
+            @Html.TextBox("username_box")
+            @Html.Label("Password: ") 
+            @Html.Password("password_box")
+            <input type="submit" value="Login">
+        }
+</div>

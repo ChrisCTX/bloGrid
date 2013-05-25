@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="@Url.Action("Index", "Style")" type="text/css" rel="stylesheet">
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    @RenderBody()
+    @Scripts.Render("~/bundles/jquery")
+    <script src="~/Scripts/jquery-ui-1.8.20.min.js"></script>
+    <script src="/path/to/jquery.masonry.min.js"></script>
+    @RenderSection("scripts", required: false)
+    <script>
+        $(function () {
+
+            var $tumblelog = $('#tumblelog');
+
+            $tumblelog.imagesLoaded(function () {
+                $tumblelog.masonry({
+                    columnWidth: 240
+                });
+            });
+
+        });
+    </script>
+</body>
+    <script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + "://platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs); } }(document, "script", "twitter-wjs");</script>
+    @Scripts.Render("~/Scripts/DragDrop.js")
+</html>
