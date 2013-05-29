@@ -1,0 +1,45 @@
+﻿@using bloGrid.Helpers
+
+
+<div id="Content">
+    @ViewBag.Panels
+        <div id="tumblelog">
+            
+            @{
+                // Dynamic loading of panels from list of dictionaries
+                // that are provided by the controller after parsing them from a
+                // JSON object
+                
+                // Helper to call is determined by the value of type in each dictionary
+                // further parameters are passed by looking them up in the dictionary 
+                
+                foreach (Dictionary<string, string> panel in ViewBag.Panels)
+                {
+                    if (panel["type"] == "facebook")
+                    {
+                        @Html.Facebook(panel["url"])
+                    }
+                    else if (panel["type"] == "instagram")
+                    {
+                        @Html.Instagram(panel["url"])
+                    }
+                    else if (panel["type"] == "youtube")
+                    {
+                        @Html.Youtube(panel["url"])
+                    }
+                    else if (panel["type"] == "rss")
+                    {
+                        @Html.Rss(panel["url"])
+                    }
+                    else if (panel["type"] == "twitter")
+                    {
+                        @Html.Twitter("chris_ctx")
+                    }
+                }
+             }
+            testing 123123123
+            <ul id="twitter_update_list" class="story"></ul>
+            @Html.Twitter("chris_ctx")
+
+        </div>
+</div>

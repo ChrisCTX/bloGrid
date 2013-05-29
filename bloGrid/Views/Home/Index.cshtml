@@ -1,0 +1,21 @@
+﻿@{
+    ViewBag.Title = "bloGrid";
+    ViewBag.Logged = true;
+}
+
+<div id="container">
+
+    @RenderPage("_LoginBar.cshtml")
+
+
+    @{
+        if (ViewBag.Logged == true)
+        {
+            @RenderPage("_PanelBar.cshtml")
+        }
+    }
+
+    @RenderPage("_Content.cshtml")
+    @RenderPage("_Footer.cshtml")
+
+</div>

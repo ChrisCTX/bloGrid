@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="@Url.Action("Index", "Style")" type="text/css" rel="stylesheet">
+
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/Scripts/jquery-ui-1.8.20.min.js")
+</head>
+<body>
+    <script src="http://twitter.com/javascripts/blogger.js"></script><script src="http://api.twitter.com/1/statuses/user_timeline/chris_ctx.json?callback=twitterCallback2&count=3"></script>
+    @RenderBody()
+</body>
+
+    @Scripts.Render("~/Scripts/jquery.masonry.min.js")
+
+    @RenderSection("scripts", required: false)
+    @Scripts.Render("~/Scripts/MasonryStart.js")
+    @Scripts.Render("~/Scripts/TwitterWidget.js")
+    @Scripts.Render("~/Scripts/DragDrop.js")
+
+
+
+</html>

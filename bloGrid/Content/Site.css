@@ -1,0 +1,158 @@
+﻿@{
+    // This is a CSS file that is parsed by Razor Engine
+    // to try and keep this relatively organized we will
+    // stick to computing variables inside this code block
+    // and simply call them as needed on the rest of the file
+    // via the standard razor \'@\' symbol.
+
+
+    var sum_of_two_numbers = 1.2 + 1;
+    var font_size = "font-size:" + sum_of_two_numbers +"em";
+    var no_padding = "padding: 0px;";
+    var no_border = "border: 0px;";
+    var no_margin = "margin: 0px;";
+    var no_spaces = no_padding + "\n" + no_border + "\n" + no_margin;
+
+}
+
+/* html 100% height needed to have full sized columns, them css hax */
+html{
+    height:100%;
+}
+
+body {
+    font-size: .85em;
+    font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
+    color: #232323;
+    background-color: #e8e8e8;
+    height: 100%;
+    min-height: 100%;
+    @no_spaces
+}
+
+header, footer, nav, section {
+    display: block;
+}
+
+
+/* Styles for basic forms
+-----------------------------------------------------------*/
+fieldset {
+    border: 1px solid #ddd;
+    padding: 0 1.4em 1.4em 1.4em;
+    margin: 0 0 1.5em 0;
+}
+
+legend {
+    @font_size
+    font-weight: bold;
+}
+
+textarea {
+    min-height: 75px;
+}
+
+.editor-label {
+    margin: 1em 0 0 0;
+}
+
+.editor-field {
+    margin: 0.5em 0 0 0;
+}
+
+
+/* Styles for validation helpers
+-----------------------------------------------------------*/
+.field-validation-error {
+    color: #f00;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+.input-validation-error {
+    border: 1px solid #f00;
+    background-color: #fee;
+}
+
+.validation-summary-errors {
+    font-weight: bold;
+    color: #f00;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+#Content {
+    background-color: #e8e8e8;
+    height: 90%;
+    margin-left: 10%;
+    
+}
+
+#PanelsBar {
+    float: left;
+    width: 10%;
+    height: 90%;
+    padding-right: 10px;
+    text-align: center;
+    background-color: #d8d8d8;
+}
+
+#LoginBar {
+    height: 3%;
+    text-align: right;
+    background-color: #111111;
+    color: #cccccc;
+}
+
+#logo {
+    text-align: left;
+}
+
+#container {
+    height:inherit;
+}
+
+#Footer {
+    position:fixed;
+    bottom:0;
+    height: 7%;
+    text-align: right;
+    width:100%;
+    font-size: 42px;
+    font-family: 'Segoe UI';
+    background-color: #111111;
+    color: #cccccc;
+}
+
+.panel {
+    padding-top: 5px;
+    height: 10%;
+}
+
+
+/* Tumblelog example */
+
+#tumblelog {
+  padding: 1.0em;
+}
+
+#tumblelog .story {
+  width: 25%;
+  margin: 5px;
+  background-color: #f8f8f8;
+  border: 10px solid #f8f8f8;
+  float: left;
+}
+
+#tumblelog h1, #tumblelog h2, #tumblelog h3 { font-weight: bold;}
+
+
+
+#tumblelog .story img
+{
+  max-width: none;
+}
