@@ -60,7 +60,6 @@ function handleYoutube() {
                         "url": url
                     };
 
-
             $.ajax({
             type: "GET",
             url: "/Home/NewPanel",
@@ -69,12 +68,6 @@ function handleYoutube() {
             dataType: 'text'
             });
 
-
-    
-        
-        //window.location.href = '';
-
-        //alert("Added Youtube video:" + url)
     }
 }
 

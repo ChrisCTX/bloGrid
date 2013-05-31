@@ -4,6 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
+using bloGrid.Models;
+using System.Security.Cryptography;
+
 namespace bloGrid.Controllers
 {
     public class HomeController : Controller
@@ -12,24 +15,28 @@ namespace bloGrid.Controllers
 
         public ActionResult Index()
         {
-            //JavaScriptSerializer marshal = new JavaScriptSerializer();
-            List<Dictionary<string, string>> panelList = new List<Dictionary<string, string>>();
-            ViewBag.Panels = ParsedJsonMockup.getMockup();
-            //string j = marshal.Serialize(ViewBag.Panels);
-            //ViewBag.json = j;
+            var db = new AccountDBContext();
+            Account acc = db.Accounts.Where(p => p.Name == "blog").FirstOrDefault();
+            JavaScriptSerializer marshal = new JavaScriptSerializer();
+            ViewBag.Panels = marshal.Deserialize<List<Dictionary<string, string>>>(acc.layoutJSON);
+            //ViewBag.Panels = ParsedJsonMockup.getMockup();
             return View();
         }
 
         [HttpGet]
         public ActionResult NewPanel(string q)
         {
-            List<Dictionary<string, string>> panelList = new List<Dictionary<string, string>>();
+            var db = new AccountDBContext();
+            Account acc = db.Accounts.Where(p => p.Name == "blog").FirstOrDefault();
             JavaScriptSerializer marshal = new JavaScriptSerializer();
-            ViewBag.Panels = panelList;
+            ViewBag.Panels = marshal.Deserialize<List<Dictionary<string, string>>>(acc.layoutJSON);
             if (q != null)
             {
                 var dict = marshal.Deserialize<Dictionary<string, string>>(q);
                 ViewBag.Panels.Add(dict);
+                string newJson = marshal.Serialize(ViewBag.Panels);
+                acc.layoutJSON = newJson;
+                db.SaveChanges();
             }
             //string j = marshal.Serialize(panelList);
             //ViewBag.json = j;

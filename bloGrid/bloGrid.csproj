@@ -125,6 +125,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="App_Code\Hashing.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="App_Code\ParsedJsonMockup.cs" />
     <Compile Include="Controllers\StyleController.cs" />
@@ -136,6 +137,7 @@
     <Compile Include="Helpers\RssHelper.cs" />
     <Compile Include="Helpers\TwitterHelper.cs" />
     <Compile Include="Helpers\YoutubeHelper.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -325,7 +327,7 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerPort>3201</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost:7324/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
