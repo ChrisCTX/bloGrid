@@ -23,6 +23,37 @@ namespace bloGrid.Controllers
             return View();
         }
 
+        public ActionResult Delete()
+        {
+            var db = new AccountDBContext();
+            Account acc = db.Accounts.Where(p => p.Name == "blog").FirstOrDefault();
+            JavaScriptSerializer marshal = new JavaScriptSerializer();
+            var clear = new List<Dictionary<string, string>>();
+            string emptyJson = marshal.Serialize(clear);
+            acc.layoutJSON = emptyJson;
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public ActionResult Edit(Account acc)
+        {
+            var db = new AccountDBContext();
+            Account blog = db.Accounts.Where(p => p.Name == "blog").FirstOrDefault();
+            string name = acc.Name;
+            string pass = acc.Password;
+            if (name == "blog")
+            {
+                if (Hashing.VerifyMd5Hash(MD5.Create(), pass, blog.Password) == true)
+                {
+                    ViewBag.Logged = true;
+                }
+            }
+            JavaScriptSerializer marshal = new JavaScriptSerializer();
+            ViewBag.Panels = marshal.Deserialize<List<Dictionary<string, string>>>(blog.layoutJSON);
+            return View("Index");
+        }
+
         [HttpGet]
         public ActionResult NewPanel(string q)
         {
@@ -38,8 +69,6 @@ namespace bloGrid.Controllers
                 acc.layoutJSON = newJson;
                 db.SaveChanges();
             }
-            //string j = marshal.Serialize(panelList);
-            //ViewBag.json = j;
             return View("Index");
         }
 

@@ -1,11 +1,27 @@
-﻿
+﻿@model bloGrid.Models.Account
+
 <div id="LoginBar">
-        @using (Html.BeginForm())
+    @{
+        <a href="/Home" id="Home">Home</a>
+        if (ViewBag.Logged == true)
         {
-            @Html.Label("Username: ")
-            @Html.TextBox("username_box")
-            @Html.Label("Password: ") 
-            @Html.Password("password_box")
+            
+            <a href="/Home/Delete" id="Restart">Delete all</a>
+        }
+        else
+        {
+            <a href="#" id="Edit">Edit</a>
+        }
+     }
+
+    <div id="login">
+        @using (Html.BeginForm("Edit", "Home", FormMethod.Post))
+        {
+            @Html.Label("Username: ")<br/>
+            @Html.TextBoxFor(model => model.Name)<br/>
+            @Html.Label("Password: ") <br/>
+            @Html.PasswordFor(model => model.Password)<br/>
             <input type="submit" value="Login">
         }
+     </div>
 </div>

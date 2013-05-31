@@ -103,6 +103,7 @@ textarea {
 
 #LoginBar {
     height: 3%;
+    min-height: 17px;
     text-align: right;
     background-color: #111111;
     color: #cccccc;
@@ -155,4 +156,13 @@ textarea {
 #tumblelog .story img
 {
   max-width: none;
+}
+
+#login {
+background-color: #808080;
+border: 2px solid black;
+}
+
+a {
+    color: #cccccc;
 }

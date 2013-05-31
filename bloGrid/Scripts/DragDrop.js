@@ -54,25 +54,70 @@ function handleCardDrop(event, ui) {
 function handleYoutube() {
     var url = prompt("Please enter the Youtube url");
     if (url != null && url != "") {
-
-        panelJSON = {
-                        "type": "youtube",
-                        "url": url
-                    };
-
-            $.ajax({
-            type: "GET",
-            url: "/Home/NewPanel",
-            data: $.param({q:JSON.stringify(panelJSON)}),
-            contentType: 'text',
-            dataType: 'text'
-            });
-
+        if (validateURL(url))
+        {
+            panelJSON = {
+                "type": "youtube",
+                "url": url
+            };
+            sendPanel(panelJSON);
+        }
     }
 }
 
-function handleFacebook() { }
-function handleInstagram() { }
-function handleRss() { }
-function handleTwitter() { }
+function handleFacebook() {
+    var url = prompt("Please enter the Facebook profile url");
+    if (url != null && url != "") {
+        if (validateURL(url)) {
+            panelJSON = {
+                "type": "facebook",
+                "url": url
+            };
+            sendPanel(panelJSON);
+        }
+    }
+}
 
+function handleInstagram() {
+    var url = prompt("Please enter the embedd url from snapwidget.com");
+    if (url != null && url != "") {
+        if (validateURL(url)) {
+            panelJSON = {
+                "type": "instagram",
+                "url": url
+            };
+            sendPanel(panelJSON);
+        }
+    }
+}
+
+function handleRss() {
+    var url = prompt("Please enter the RSS url");
+    if (url != null && url != "") {
+        if (validateURL(url)) {
+            panelJSON = {
+                "type": "rss",
+                "url": url
+            };
+            sendPanel(panelJSON);
+        }
+    }
+}
+function handleTwitter() {
+    alert("Twitter feature under construction");
+}
+
+function sendPanel(panel)
+{
+    $.ajax({
+        type: "GET",
+        url: "/Home/NewPanel",
+        data: $.param({ q: JSON.stringify(panel) }),
+        contentType: 'text',
+        dataType: 'text'
+    });
+}
+
+function validateURL(value) {
+    return /^(https?|ftp):\/\/(((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:)*@)?(((\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5]))|((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?)(:\d*)?)(\/((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)+(\/(([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)*)*)?)?(\?((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|[\uE000-\uF8FF]|\/|\?)*)?(\#((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|\/|\?)*)?$/i.test(value);
+}
