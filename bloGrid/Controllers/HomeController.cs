@@ -8,33 +8,32 @@ namespace bloGrid.Controllers
 {
     public class HomeController : Controller
     {
+        
+
         public ActionResult Index()
         {
-            //string json = @"{""type"": ""youtube"", ""url"": ""http://www.youtube.com/embed/SYpsFnhMmcY""}";
-            //JavaScriptSerializer a = new JavaScriptSerializer();
-            //var dict = a.Deserialize<Dictionary<string, string>>(json);
+            //JavaScriptSerializer marshal = new JavaScriptSerializer();
+            List<Dictionary<string, string>> panelList = new List<Dictionary<string, string>>();
             ViewBag.Panels = ParsedJsonMockup.getMockup();
-            //ViewBag.Panels.Add(dict);
+            //string j = marshal.Serialize(ViewBag.Panels);
+            //ViewBag.json = j;
             return View();
         }
 
         [HttpGet]
-        public PartialViewResult NewPanel(string q)
+        public ActionResult NewPanel(string q)
         {
-            string json = @"{""type"": ""youtube"", ""url"": ""http://www.youtube.com/embed/SYpsFnhMmcY""}";
-            var l = new List<Dictionary<string, string>>();
-            JavaScriptSerializer a = new JavaScriptSerializer();
-            ViewBag.Panels = l;
+            List<Dictionary<string, string>> panelList = new List<Dictionary<string, string>>();
+            JavaScriptSerializer marshal = new JavaScriptSerializer();
+            ViewBag.Panels = panelList;
             if (q != null)
             {
-                var dict = a.Deserialize<Dictionary<string, string>>(q);
-                l.Add(dict);
+                var dict = marshal.Deserialize<Dictionary<string, string>>(q);
+                ViewBag.Panels.Add(dict);
             }
-            else
-            {
-                var mockDict = a.Deserialize<Dictionary<string, string>>(json);  
-            }
-            return PartialView("_Content");
+            //string j = marshal.Serialize(panelList);
+            //ViewBag.json = j;
+            return View("Index");
         }
 
     }

@@ -2,9 +2,7 @@
 
 
 <div id="Content">
-    @ViewBag.Panels
         <div id="tumblelog">
-            
             @{
                 // Dynamic loading of panels from list of dictionaries
                 // that are provided by the controller after parsing them from a
@@ -37,9 +35,6 @@
                     }
                 }
              }
-            testing 123123123
-            <ul id="twitter_update_list" class="story"></ul>
-            @Html.Twitter("chris_ctx")
-
         </div>
+        @ViewBag.json
 </div>

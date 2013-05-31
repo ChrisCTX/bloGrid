@@ -60,9 +60,19 @@ function handleYoutube() {
                         "url": url
                     };
 
+
+            $.ajax({
+            type: "GET",
+            url: "/Home/NewPanel",
+            data: $.param({q:JSON.stringify(panelJSON)}),
+            contentType: 'text',
+            dataType: 'text'
+            });
+
+
+    
         
-        $("Content").replaceWith($.post("/Home/NewPanel", panelJSON));
-        
+        //window.location.href = '';
 
         //alert("Added Youtube video:" + url)
     }

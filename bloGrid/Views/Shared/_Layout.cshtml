@@ -11,15 +11,13 @@
     @Scripts.Render("~/Scripts/jquery-ui-1.8.20.min.js")
 </head>
 <body>
-    <script src="http://twitter.com/javascripts/blogger.js"></script><script src="http://api.twitter.com/1/statuses/user_timeline/chris_ctx.json?callback=twitterCallback2&count=3"></script>
-    @RenderBody()
+     @RenderBody()
 </body>
 
     @Scripts.Render("~/Scripts/jquery.masonry.min.js")
 
     @RenderSection("scripts", required: false)
     @Scripts.Render("~/Scripts/MasonryStart.js")
-    @Scripts.Render("~/Scripts/TwitterWidget.js")
     @Scripts.Render("~/Scripts/DragDrop.js")
 
 
