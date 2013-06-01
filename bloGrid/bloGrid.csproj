@@ -126,6 +126,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="App_Code\Hashing.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="App_Code\ParsedJsonMockup.cs" />
     <Compile Include="Controllers\StyleController.cs" />
@@ -305,6 +306,7 @@
     <Content Include="Views\Home\_LoginBar.cshtml" />
     <Content Include="Views\Home\_Content.cshtml" />
     <Content Include="Views\Home\_Footer.cshtml" />
+    <Content Include="Views\Shared\FailWhale.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
